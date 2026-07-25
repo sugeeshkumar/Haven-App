@@ -1,2 +1,32 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Directory for instrumented code coverage outputs
+coverage
+
+# Node modules
+node_modules/
+
+# Production build output
+dist/
+
+# Environment variables
 .env
 .env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+
+# IDEs & System files
+.DS_Store
+.vscode/
+.idea/
