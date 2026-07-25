@@ -2,10 +2,9 @@ import React from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useRecovery } from '../../context/RecoveryContext';
 import { ShieldAlert, Heart, User, Sparkles } from 'lucide-react';
-import { Badge } from '../ui/Badge';
 
 export function Header() {
-  const { role, switchRole, userProfile } = useAuth();
+  const { role, switchRole } = useAuth();
   const { setIsSosOpen } = useRecovery();
 
   return (
@@ -36,10 +35,11 @@ export function Header() {
           {/* Persona Switcher Toggle */}
           <div className="glass-pill p-1 rounded-2xl flex items-center gap-1 border border-white/10">
             <button
+              type="button"
               onClick={() => switchRole('patient')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                 role === 'patient' 
-                  ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20' 
+                  ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20 font-bold' 
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -48,10 +48,11 @@ export function Header() {
             </button>
 
             <button
+              type="button"
               onClick={() => switchRole('caregiver')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                 role === 'caregiver' 
-                  ? 'bg-indigo-500 text-white shadow-md shadow-indigo-500/20' 
+                  ? 'bg-indigo-500 text-white shadow-md shadow-indigo-500/20 font-bold' 
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -62,9 +63,10 @@ export function Header() {
 
           {/* High-Contrast Emergency SOS Button */}
           <button
+            type="button"
             onClick={() => setIsSosOpen(true)}
             aria-label="Open Emergency SOS"
-            className="px-3.5 py-2 rounded-2xl bg-rose-500/20 border border-rose-500/40 text-rose-300 hover:bg-rose-500 hover:text-white transition-all flex items-center gap-1.5 font-bold text-xs shadow-lg shadow-rose-500/20 active:scale-95"
+            className="px-3.5 py-2 rounded-2xl bg-rose-500/20 border border-rose-500/40 text-rose-300 hover:bg-rose-500 hover:text-white transition-all flex items-center gap-1.5 font-bold text-xs shadow-lg shadow-rose-500/20 active:scale-95 cursor-pointer"
           >
             <ShieldAlert className="w-4 h-4 text-rose-400 animate-pulse" />
             <span>SOS</span>

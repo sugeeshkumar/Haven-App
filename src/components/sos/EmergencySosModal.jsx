@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useRecovery } from '../../context/RecoveryContext';
 import { generateEmergencySosScript } from '../../services/gemini';
-import { X, ShieldAlert, PhoneCall, MapPin, CheckSquare, Square, Copy, Check, ArrowLeft } from 'lucide-react';
-import { PrimaryButton } from '../ui/PrimaryButton';
+import { ShieldAlert, PhoneCall, MapPin, CheckSquare, Square, Copy, Check, ArrowLeft } from 'lucide-react';
 
 export function EmergencySosModal() {
-  const { isSosOpen, setIsSosOpen, emergencyContacts } = useRecovery();
+  const { isSosOpen, setIsSosOpen } = useRecovery();
   const [script, setScript] = useState('');
   const [copied, setCopied] = useState(false);
   const [checklist, setChecklist] = useState([
@@ -47,8 +46,9 @@ export function EmergencySosModal() {
         {/* Header with Consistent Back button in top-left */}
         <div className="flex items-center justify-between pb-4 border-b border-rose-500/30">
           <button
+            type="button"
             onClick={() => setIsSosOpen(false)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-rose-200 hover:text-white transition-all text-xs font-semibold border border-rose-500/40 active:scale-95 shadow-lg"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-rose-200 hover:text-white transition-all text-xs font-semibold border border-rose-500/40 active:scale-95 shadow-lg cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 text-rose-300" />
             <span>Back</span>
@@ -67,8 +67,9 @@ export function EmergencySosModal() {
               AI Dispatcher Emergency Script
             </span>
             <button
+              type="button"
               onClick={copyScript}
-              className="text-xs text-rose-200 hover:text-white flex items-center gap-1 bg-rose-500/20 px-2.5 py-1 rounded-xl border border-rose-500/40"
+              className="text-xs text-rose-200 hover:text-white flex items-center gap-1 bg-rose-500/20 px-2.5 py-1 rounded-xl border border-rose-500/40 cursor-pointer"
             >
               {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
               <span>{copied ? 'Copied' : 'Copy Script'}</span>
@@ -122,7 +123,7 @@ export function EmergencySosModal() {
         <div className="mt-5 space-y-2">
           <a
             href="tel:988"
-            className="w-full py-3.5 rounded-2xl bg-rose-500 hover:bg-rose-400 text-white font-bold text-base flex items-center justify-center gap-2 shadow-lg shadow-rose-500/50 glow-coral active:scale-95"
+            className="w-full py-3.5 rounded-2xl bg-rose-500 hover:bg-rose-400 text-white font-bold text-base flex items-center justify-center gap-2 shadow-lg shadow-rose-500/50 glow-coral active:scale-95 cursor-pointer"
           >
             <PhoneCall className="w-5 h-5" />
             <span>Call 988 Crisis Lifeline Immediately</span>

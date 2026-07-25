@@ -4,8 +4,8 @@ import { useVoice } from '../../context/VoiceContext';
 import { ShieldAlert, Mic, Calendar, BookOpen, HeartPulse } from 'lucide-react';
 
 export function NavigationBar() {
-  const { triggerCrisis, setIsCheckInOpen, setIsEducationOpen } = useRecovery();
-  const { openVoiceOverlay, startVoiceInput, isListening } = useVoice();
+  const { triggerCrisis, setIsCheckInOpen, setIsEducationOpen, setIsSosOpen } = useRecovery();
+  const { openVoiceOverlay, startVoiceInput } = useVoice();
 
   const handleVoiceTap = () => {
     openVoiceOverlay();
@@ -18,8 +18,9 @@ export function NavigationBar() {
         
         {/* Crisis Action Button */}
         <button
+          type="button"
           onClick={() => triggerCrisis('craving')}
-          className="flex flex-col items-center gap-1 p-2 text-rose-400 hover:text-rose-300 transition-all active:scale-90"
+          className="flex flex-col items-center gap-1 p-2 text-rose-400 hover:text-rose-300 transition-all active:scale-90 cursor-pointer"
         >
           <div className="w-10 h-10 rounded-2xl bg-rose-500/15 flex items-center justify-center border border-rose-500/30">
             <HeartPulse className="w-5 h-5 text-rose-400" />
@@ -29,8 +30,9 @@ export function NavigationBar() {
 
         {/* Daily Check-in */}
         <button
+          type="button"
           onClick={() => setIsCheckInOpen(true)}
-          className="flex flex-col items-center gap-1 p-2 text-slate-300 hover:text-white transition-all active:scale-90"
+          className="flex flex-col items-center gap-1 p-2 text-slate-300 hover:text-white transition-all active:scale-90 cursor-pointer"
         >
           <div className="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
             <Calendar className="w-5 h-5 text-emerald-400" />
@@ -41,9 +43,10 @@ export function NavigationBar() {
         {/* Central Floating AI Voice Pulse Mic Button */}
         <div className="-mt-8 relative">
           <button
+            type="button"
             onClick={handleVoiceTap}
             aria-label="Tap to speak with AI Companion"
-            className="w-16 h-16 rounded-full bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-500 p-1 shadow-xl shadow-indigo-500/40 hover:scale-105 active:scale-95 transition-all flex items-center justify-center relative glow-indigo group"
+            className="w-16 h-16 rounded-full bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-500 p-1 shadow-xl shadow-indigo-500/40 hover:scale-105 active:scale-95 transition-all flex items-center justify-center relative glow-indigo group cursor-pointer"
           >
             <span className="absolute -inset-1 rounded-full bg-indigo-500/30 animate-ping pointer-events-none" />
             <div className="w-full h-full rounded-full bg-indigo-600 flex items-center justify-center border border-white/30">
@@ -57,8 +60,9 @@ export function NavigationBar() {
 
         {/* Education Hub */}
         <button
+          type="button"
           onClick={() => setIsEducationOpen(true)}
-          className="flex flex-col items-center gap-1 p-2 text-slate-300 hover:text-white transition-all active:scale-90"
+          className="flex flex-col items-center gap-1 p-2 text-slate-300 hover:text-white transition-all active:scale-90 cursor-pointer"
         >
           <div className="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
             <BookOpen className="w-5 h-5 text-teal-400" />
@@ -66,15 +70,16 @@ export function NavigationBar() {
           <span className="text-[10px] font-semibold tracking-wide">Guides</span>
         </button>
 
-        {/* SOS Quick Button */}
+        {/* Dedicated SOS Emergency Button */}
         <button
-          onClick={() => triggerCrisis('panic')}
-          className="flex flex-col items-center gap-1 p-2 text-slate-300 hover:text-white transition-all active:scale-90"
+          type="button"
+          onClick={() => setIsSosOpen(true)}
+          className="flex flex-col items-center gap-1 p-2 text-rose-400 hover:text-rose-300 transition-all active:scale-90 cursor-pointer"
         >
-          <div className="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
-            <ShieldAlert className="w-5 h-5 text-amber-400" />
+          <div className="w-10 h-10 rounded-2xl bg-rose-500/15 flex items-center justify-center border border-rose-500/30">
+            <ShieldAlert className="w-5 h-5 text-rose-400 animate-pulse" />
           </div>
-          <span className="text-[10px] font-semibold tracking-wide">Panic</span>
+          <span className="text-[10px] font-semibold tracking-wide">SOS</span>
         </button>
 
       </div>

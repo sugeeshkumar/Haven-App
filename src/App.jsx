@@ -29,9 +29,10 @@ import { EducationHubModal } from './components/education/EducationHubModal';
 import { EmergencySosModal } from './components/sos/EmergencySosModal';
 
 export default function App() {
-  const { isPatient, userProfile } = useAuth();
+  const { role, userProfile } = useAuth();
   const { riskAssessment } = useRecovery();
 
+  const isPatient = role === 'patient';
   const showFutureMe = isPatient && (riskAssessment?.level === 'Low' || riskAssessment?.level === 'Moderate');
 
   return (
@@ -41,12 +42,12 @@ export default function App() {
       <Header />
 
       {/* Main Content Area */}
-      <main className="max-w-4xl mx-auto px-4 pt-4 pb-32">
+      <main className="max-[#0B0F19] max-w-4xl mx-auto px-4 pt-4 pb-32">
         {isPatient ? (
           /* Redesigned Emotional Home Screen */
           <div className="space-y-10">
             
-            {/* 1. Primary Emotional Hero Section: "How are you feeling today?" + Glowing AI Orb + 4 Floating Actions */}
+            {/* 1. Primary Emotional Hero Section */}
             <HavenOrbHero />
 
             {/* Divider with subtle glowing line */}
@@ -59,25 +60,14 @@ export default function App() {
 
             {/* 2. Today's Encouragement & Risk Overview */}
             <div className="space-y-5">
-              
-              {/* AI-Generated Encouragement Mission */}
               <DailyMissionCard />
-
-              {/* Predictive Relapse Risk Safeguard Card */}
               <PredictiveRiskCard />
-
-              {/* Compact Living Recovery Tree */}
               <LivingTreeSvg streakDays={userProfile.streakDays} compact={true} />
-
-              {/* Future Me Message Recorder (Offered when emotionally stable) */}
               {showFutureMe && <FutureMeWidget />}
-
-              {/* Recovery Statistics Grid (Moved lower on the page) */}
               <div className="pt-2">
                 <div className="text-xs font-semibold text-slate-400 mb-2 px-1">Recovery Milestones & Metrics</div>
                 <StreakStatsCard />
               </div>
-
             </div>
 
           </div>

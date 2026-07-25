@@ -13,7 +13,7 @@ import { PrimaryButton } from '../ui/PrimaryButton';
 export function SafeSpaceModal() {
   const { isSafeSpaceOpen, closeSafeSpace, setIsSosOpen, emergencyContacts, futureMeMessage } = useRecovery();
   const { openVoiceOverlay, startVoiceInput } = useVoice();
-  const { userProfile } = useAuth();
+  const { userProfile, switchRole } = useAuth();
 
   // Stage: 'breathing' (0-8s 4-4 breathing cycle) -> 'revealed' (Fade-in Companion & 4 options)
   const [stage, setStage] = useState('breathing');
@@ -103,8 +103,8 @@ export function SafeSpaceModal() {
   };
 
   const handleContactCaregiver = () => {
-    const caregiver = emergencyContacts.find(c => c.type === 'personal') || emergencyContacts[2];
-    window.location.href = `tel:${caregiver.phone}`;
+    closeSafeSpace();
+    switchRole('caregiver');
   };
 
   const toggleFutureSelfAudio = () => {
@@ -137,10 +137,10 @@ export function SafeSpaceModal() {
     }
   };
 
+  if (!isSafeSpaceOpen) return null;
+
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0F19] transition-all duration-[800ms] ease-in-out overflow-y-auto ${
-      isSafeSpaceOpen ? 'opacity-100 pointer-events-auto scale-100' : 'opacity-0 pointer-events-none scale-95'
-    }`}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0F19] transition-all duration-[800ms] ease-in-out overflow-y-auto opacity-100 pointer-events-auto scale-100">
       
       {/* Animated Golden Grassland Sunset Scene */}
       <NatureBackgroundSvg />
@@ -310,18 +310,18 @@ export function SafeSpaceModal() {
                 <ArrowRight className="w-5 h-5 text-rose-400" />
               </button>
 
-              {/* 4. Contact Caregiver */}
+              {/* 4. Open Caregiver Support */}
               <button
                 onClick={handleContactCaregiver}
                 className="p-4 rounded-3xl glass-card hover:bg-indigo-500/20 text-indigo-200 font-bold text-base border border-indigo-500/40 flex items-center justify-between shadow-xl transition-all active:scale-95 bg-indigo-950/20"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-2xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center border border-indigo-500/30">
-                    <PhoneCall className="w-5 h-5 text-indigo-300" />
+                    <Heart className="w-5 h-5 text-indigo-300" />
                   </div>
                   <div className="text-left">
-                    <div className="font-display font-bold">Contact Janani</div>
-                    <div className="text-xs text-indigo-300 font-normal">1-tap dial Janani</div>
+                    <div className="font-display font-bold">Caregiver Portal</div>
+                    <div className="text-xs text-indigo-300 font-normal">AI-assisted guides for Janani</div>
                   </div>
                 </div>
                 <ArrowRight className="w-5 h-5 text-indigo-400" />
