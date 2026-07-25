@@ -1,0 +1,22 @@
+[3109:140224:0725/122616.959783:INFO:components/enterprise/browser/controller/chrome_browser_cloud_management_controller.cc:241] No machine level policy manager exists.
+[3109:140292:0725/122617.624678:ERROR:net/disk_cache/simple/simple_file_enumerator.cc:58] Could not get file info for /Users/velan/Haven-PromptWars/scratch/chrome-profile/Default/Service Worker/ScriptCache/f1cdccba37924bda_1
+[3109:140224:0725/122618.937061:INFO:CONSOLE:789] "[vite] connecting...", source: http://localhost:3001/@vite/client (789)
+[3109:140224:0725/122618.946752:INFO:CONSOLE:21609] "%cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold", source: http://localhost:3001/node_modules/.vite/deps/chunk-NXESFFTV.js?v=32b20e24 (21609)
+[3109:140224:0725/122619.551900:INFO:CONSOLE:644] "Uncaught ReferenceError: isFutureSelfOpen is not defined", source: http://localhost:3001/src/components/safespace/SafeSpaceModal.jsx (644)
+[3109:140224:0725/122619.551921:INFO:CONSOLE:644] "Uncaught ReferenceError: isFutureSelfOpen is not defined", source: http://localhost:3001/src/components/safespace/SafeSpaceModal.jsx (644)
+[3109:140224:0725/122619.551932:INFO:CONSOLE:14080] "The above error occurred in the <SafeSpaceModal> component:
+
+    at SafeSpaceModal (http://localhost:3001/src/components/safespace/SafeSpaceModal.jsx:43:97)
+    at div
+    at div
+    at LivingBackground (http://localhost:3001/src/components/layout/LivingBackground.jsx:21:36)
+    at App (http://localhost:3001/src/App.jsx:39:38)
+    at VoiceProvider (http://localhost:3001/src/context/VoiceContext.jsx:22:33)
+    at RecoveryProvider (http://localhost:3001/src/context/RecoveryContext.jsx:23:36)
+    at AuthProvider (http://localhost:3001/src/context/AuthContext.jsx:21:32)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.", source: http://localhost:3001/node_modules/.vite/deps/chunk-NXESFFTV.js?v=32b20e24 (14080)
+[3109:140224:0725/122619.551941:INFO:CONSOLE:19466] "Uncaught ReferenceError: isFutureSelfOpen is not defined", source: http://localhost:3001/node_modules/.vite/deps/chunk-NXESFFTV.js?v=32b20e24 (19466)
+[3109:140224:0725/122619.552011:INFO:CONSOLE:912] "[vite] connected.", source: http://localhost:3001/@vite/client (912)
+[3109:140284:0725/122620.678927:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT

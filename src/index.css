@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #0B0F19;
+    color: #F8FAFC;
+    overflow-x: hidden;
+  }
+}
+
+/* Glassmorphism Design System Utility Classes */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-card-hover {
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 16px 48px 0 rgba(0, 0, 0, 0.5);
+}
+
+.glass-modal {
+  background: rgba(11, 15, 25, 0.85);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glowing Accent Utilities */
+.glow-emerald {
+  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.45);
+}
+
+.glow-coral {
+  box-shadow: 0 0 35px -5px rgba(244, 63, 94, 0.55);
+}
+
+.glow-indigo {
+  box-shadow: 0 0 35px -5px rgba(99, 102, 241, 0.55);
+}
+
+/* Custom Soothing Range Sliders */
+input[type=range] {
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: #10B981;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+  margin-top: -8px;
+  transition: transform 0.1s ease;
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+  transform: scale(1.2);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(11, 15, 25, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Living Environment Animations */
+
+/* Tree Sway */
+@keyframes sway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(1.5deg); }
+}
+.animate-sway {
+  animation: sway 6s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* Tree Leaves Sway */
+@keyframes sway-leaves {
+  0%, 100% { transform: rotate(0deg) translate(0, 0); }
+  50% { transform: rotate(-2.5deg) translate(-1px, 1px); }
+}
+.animate-sway-leaves {
+  animation: sway-leaves 4s ease-in-out infinite;
+}
+
+/* Grass Sway */
+@keyframes sway-grass {
+  0%, 100% { transform: skewX(-2deg); }
+  50% { transform: skewX(3deg); }
+}
+.animate-sway-grass {
+  animation: sway-grass 5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* Clouds Drift */
+@keyframes drift-cloud {
+  0% { transform: translateX(-10%); }
+  100% { transform: translateX(110%); }
+}
+.animate-drift-cloud {
+  animation: drift-cloud 160s linear infinite;
+}
+
+/* Rising Sparkle Particles */
+@keyframes rise-particles {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: translateY(-120px) scale(1.1); opacity: 0; }
+}
+.animate-rise-particles {
+  animation: rise-particles 8s ease-in infinite;
+}
+
+/* Firefly Flying Path (Floating Natural Movement) */
+@keyframes float-firefly {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  20% { transform: translate(60px, -40px) scale(1.1); }
+  40% { transform: translate(120px, 10px) scale(0.9); }
+  60% { transform: translate(30px, 80px) scale(1.15); }
+  80% { transform: translate(-50px, 30px) scale(0.95); }
+}
+.animate-firefly {
+  animation: float-firefly 18s ease-in-out infinite;
+}
+
+/* Butterfly Flutter */
+@keyframes flutter {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.2); }
+}
+.animate-flutter {
+  animation: flutter 0.15s linear infinite;
+}
+
+/* Fade In transition */
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Pulse slower for background glowing lighting */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.45; }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+/* Skeleton Loading Shimmer */
+@keyframes skeleton-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.1) 37%, rgba(255,255,255,0.04) 63%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+}
